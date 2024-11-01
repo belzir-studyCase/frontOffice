@@ -1,23 +1,40 @@
-import logo from './logo.svg';
+
 import './App.css';
+import Login from './components/login';
+import { useEffect } from 'react';
+import { gapi } from 'gapi-script';
+import Logout from './components/logout';
+import NotFound from './components/notfound';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React from 'react';
+import Home from './components/home';
+import RequestListe from './components/request-liste';
+import CreateRequest from './components/createRequest';
+import UpdateRequest from './components/updateRequest';
+
+const clientId = "27111715816-0c4sv24r2uublsg9m5irehg31jme95dm.apps.googleusercontent.com"
+
+
+
 
 function App() {
+
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+       <Router>
+            <div>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/requests" element={<RequestListe />} />
+                    <Route path="/requests/create" element={<CreateRequest />} />
+                    <Route path="/requests/:id" element={<UpdateRequest />} />
+                    <Route path="/login" element={<Login />} />
+                    <Route path="/logout" element={<Logout />} />
+                    <Route path="*" element={<NotFound />} />
+                </Routes>
+            </div>
+        </Router>
     </div>
   );
 }
