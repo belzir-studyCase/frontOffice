@@ -14,6 +14,7 @@ function UpdateRequest() {
         // Fetch the existing request details when the component mounts
         const fetchRequest = async () => {
             try {
+                
                 const response = await axios.get(`http://localhost:3000/request/${id}`);
                 const { title, description } = response.data;
                 setTitle(title);
