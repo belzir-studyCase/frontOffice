@@ -1,3 +1,4 @@
+import axios from "axios";
 import { GoogleLogout } from "react-google-login"
 import { useNavigate } from "react-router-dom";
 
@@ -7,8 +8,11 @@ const clientId = "27111715816-0c4sv24r2uublsg9m5irehg31jme95dm.apps.googleuserco
 
 function Logout() {
     const navigate = useNavigate();
-    const onSuccess = () => {
+    const onSuccess = async() => {
         console.log("Log out Success !");
+        const user = JSON.parse(localStorage.getItem("user"));
+        await axios.post(`http://localhost:3000/notification/closesession/${user.email}`);
+
         navigate('/login')
     }
     return (

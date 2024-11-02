@@ -40,9 +40,14 @@ function Login() {
         // Change axios request to POST and send userData in the body
         axios.post('http://localhost:3000/account/login', userData)
             .then(response => {
-                console.log("Login successful:", response.data);
+                console.log("Login successful:", response.data.role);
                 localStorage.setItem('user', JSON.stringify(userData));
-                navigate('/requests');
+                if (response.data.role === "Admin") {
+                    navigate('/all/requests');
+                } else {
+                    navigate('/requests');
+                }
+
             })
             .catch(error => {
                 console.error("Error fetching login data:", error);
@@ -54,15 +59,34 @@ function Login() {
     };
 
     return (
-        <div id="signInButton">
+        <div id="signInButton"><center>
+            <h3> Hello Again .</h3>
             <GoogleLogin
                 clientId={clientId}
-                buttonText="Login"
                 onSuccess={onSuccess}
                 onFailure={onFailure}
                 cookiePolicy="single_host_origin"
                 isSignedIn={true}
-            />
+                render={(props) => (
+                    <button
+                        onClick={props.onClick}
+                        disabled={props.disabled}
+                        style={{
+                            backgroundColor: "#4285F4",
+                            color: "#fff",
+                            padding: "10px 20px",
+                            border: "none",
+                            borderRadius: "4px",
+                            fontSize: "16px",
+                            cursor: "pointer",
+                            display: "flex",
+                            alignItems: "center",
+                            gap: "8px"
+                        }}
+                    >
+
+                        Login with Google
+                    </button>)} /></center>
         </div>
     );
 }
