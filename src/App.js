@@ -14,6 +14,7 @@ import UpdateRequest from './components/updateRequest';
 import AllRequests from './components/all-requests';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import AllUsers from './components/all-users';
+import Notification from './components/notifications';
 const clientId = "27111715816-0c4sv24r2uublsg9m5irehg31jme95dm.apps.googleusercontent.com"
 
 
@@ -32,7 +33,7 @@ function App() {
             <Route path="/requests/create" element={<CreateRequest />} />
             <Route path="/all/requests" element={<AllRequests />} />
             <Route path="/requests/:id" element={<UpdateRequest />} />
-
+            <Route path="/all/notifications" element={<Notification />} />
             <Route path="/all/users" element={<AllUsers />} />
             <Route path="/login" element={<Login />} />
             <Route path="/logout" element={<Logout />} />

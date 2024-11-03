@@ -1,9 +1,10 @@
 
 import React from 'react'
+import Login from './login'
 
 function Home() {
   return (
-    <div>Home</div>
+    <div><Login></Login></div>
   )
 }
 

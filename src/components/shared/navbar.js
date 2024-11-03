@@ -11,6 +11,9 @@ function Navbar() {
     const GoToUsers = () => {
         navigate("/all/users")
     }
+    const GoToNotifactions = () => {
+        navigate("/all/notifications")
+    }
     const user = JSON.parse(localStorage.getItem("user"));
     return (
         <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -22,10 +25,13 @@ function Navbar() {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#" onClick={GoToUsers}>Users</a>
+                            <a class="nav-link" aria-current="page" onClick={GoToUsers}>Users</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#" onClick={GoToRequest}>Requests</a>
+                            <a class="nav-link" aria-current="page" onClick={GoToRequest}>Requests</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" aria-current="page" onClick={GoToNotifactions}>Notifications</a>
                         </li>
                     </ul>
                     <span className="navbar-text me-3">

@@ -34,13 +34,13 @@ function Login() {
             email: req.profileObj.email,
             name: req.profileObj.name,
             givenName: req.profileObj.givenName,
-            familyName: req.profileObj.familyName
+            familyName: req.profileObj.familyName,
         };
 
         // Change axios request to POST and send userData in the body
         axios.post('http://localhost:3000/account/login', userData)
             .then(response => {
-                console.log("Login successful:", response.data.role);
+               
                 localStorage.setItem('user', JSON.stringify(userData));
                 if (response.data.role === "Admin") {
                     navigate('/all/requests');
@@ -86,7 +86,8 @@ function Login() {
                     >
 
                         Login with Google
-                    </button>)} /></center>
+                    </button>)} />
+                </center>
         </div>
     );
 }

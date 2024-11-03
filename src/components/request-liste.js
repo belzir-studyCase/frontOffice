@@ -33,6 +33,17 @@ function RequestListe() {
         navigate(`/requests/${id}`);
     };
 
+    const deleteRequest = (id) => {
+        axios.delete(`http://localhost:3000/request/${id}`)
+            .then(response => {
+                setRefresh(!refresh);
+            })
+            .catch(err => {
+                console.error("Error delete request:", err);
+                
+            });
+
+    }
     return (
         <>
             <NavbarClient></NavbarClient>
@@ -86,7 +97,11 @@ function RequestListe() {
                                         {request.stats}
                                     </span>
                                 </td>
-                                <td> <button className='btn btn-danger btn-sm' disabled={request.stats != 'Pending'}>Delete </button></td>
+                                <td> <button className='btn btn-danger btn-sm' 
+                                onClick={() =>{
+                                    deleteRequest(request._id)
+                                }}
+                                disabled={request.stats != 'Pending'}>Delete </button></td>
                             </tr>
                         ))}
                     </tbody>
