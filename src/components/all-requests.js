@@ -10,7 +10,9 @@ function AllRequests() {
     const [reloadData, setRelaod] = useState(false);
     const updateStateRequest = async (id, stats) => {
         try {
+            // https://gateway-9pxx.onrender.com
             const response = await axios.put(`http://localhost:3000/request/update-status/${id}`, { stats });
+            
             console.log("Request status updated:", response.data);
             setRelaod(!reloadData)
         } catch (err) {

@@ -16,7 +16,6 @@ function RequestListe() {
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'));
         if (user && user.email) {
-            // Fetch requests associated with the user's email
             axios.get(`http://localhost:3000/request/user/${user.email}`)
                 .then(response => {
                     setRequests(response.data);
@@ -54,7 +53,7 @@ function RequestListe() {
                         <div className='col-2'>  <button onClick={handleShow} className="btn btn-danger"> Create new Request </button></div>
                     </div>
                 </div>
-                {error &&
+                {requests.length === 0 &&
                     <div class="alert alert-danger" role="alert">
                         No Requests Found !
                     </div>}
