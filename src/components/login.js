@@ -38,7 +38,7 @@ function Login() {
         };
 
         // Change axios request to POST and send userData in the body
-        axios.post('http://localhost:3000/account/login', userData)
+        axios.post('https://gateway-9pxx.onrender.com/account/login', userData)
             .then(response => {
                
                 localStorage.setItem('user', JSON.stringify(userData));

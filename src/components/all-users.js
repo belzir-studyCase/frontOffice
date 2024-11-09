@@ -3,12 +3,12 @@ import React, { useEffect, useState } from 'react'
 import Navbar from './shared/navbar';
 
 function AllUsers() {
-    //http://localhost:3000/account/all/users/
+    //https://gateway-9pxx.onrender.com/account/all/users/
     const [users , setUser] = useState([]); 
     const [error , setError] = useState(null); 
     useEffect(() => {
 
-        axios.get(`http://localhost:3000/account/all/users/`)
+        axios.get(`https://gateway-9pxx.onrender.com/account/all/users/`)
             .then(response => {
                 setUser(response.data); 
             })

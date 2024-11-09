@@ -8,7 +8,7 @@ function Notification() {
     
     useEffect(() => {
             // Fetch requests associated with the user's email
-            axios.get(`http://localhost:3000/notification/all`)
+            axios.get(`https://gateway-9pxx.onrender.com/notification/all`)
                 .then(response => {
                     console.log(response.data.notifications);
                     

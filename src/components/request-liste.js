@@ -16,7 +16,7 @@ function RequestListe() {
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'));
         if (user && user.email) {
-            axios.get(`http://localhost:3000/request/user/${user.email}`)
+            axios.get(`https://gateway-9pxx.onrender.com/request/user/${user.email}`)
                 .then(response => {
                     setRequests(response.data);
                 })
@@ -33,7 +33,7 @@ function RequestListe() {
     };
 
     const deleteRequest = (id) => {
-        axios.delete(`http://localhost:3000/request/${id}`)
+        axios.delete(`https://gateway-9pxx.onrender.com/request/${id}`)
             .then(response => {
                 setRefresh(!refresh);
             })

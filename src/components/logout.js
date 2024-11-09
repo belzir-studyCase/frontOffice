@@ -11,7 +11,7 @@ function Logout() {
     const onSuccess = async() => {
         console.log("Log out Success !");
         const user = JSON.parse(localStorage.getItem("user"));
-        await axios.post(`http://localhost:3000/notification/closesession/${user.email}`);
+        await axios.post(`https://gateway-9pxx.onrender.com/notification/closesession/${user.email}`);
 
         navigate('/login')
     }

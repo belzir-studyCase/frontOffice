@@ -25,7 +25,7 @@ function CreateRequest() {
         };
 
         try {
-            const response = await axios.post('http://localhost:3000/request', requestData); // Update URL to your API endpoint
+            const response = await axios.post('https://gateway-9pxx.onrender.com/request', requestData); // Update URL to your API endpoint
             setSuccess('Request created successfully!');
             setTitle(''); // Clear the title field
             setDescription(''); // Clear the description field

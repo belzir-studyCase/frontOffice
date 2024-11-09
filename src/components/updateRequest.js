@@ -13,7 +13,7 @@ function UpdateRequest() {
     useEffect(() => {
         const fetchRequest = async () => {
             try {
-                const response = await axios.get(`http://localhost:3000/request/${id}`);
+                const response = await axios.get(`https://gateway-9pxx.onrender.com/request/${id}`);
                 const { title, description, stats } = response.data;
                 if (stats != 'Pending') {
                     navigate("/requests")
@@ -48,7 +48,7 @@ function UpdateRequest() {
         };
 
         try {
-            const response = await axios.put(`http://localhost:3000/request/${id}`, updatedRequestData);
+            const response = await axios.put(`https://gateway-9pxx.onrender.com/request/${id}`, updatedRequestData);
             setSuccess('Request updated successfully!');
             navigate('/requests');
             console.log(response.data);

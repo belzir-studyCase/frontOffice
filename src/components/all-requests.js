@@ -11,7 +11,7 @@ function AllRequests() {
     const updateStateRequest = async (id, stats) => {
         try {
             // https://gateway-9pxx.onrender.com
-            const response = await axios.put(`http://localhost:3000/request/update-status/${id}`, { stats });
+            const response = await axios.put(`https://gateway-9pxx.onrender.com/request/update-status/${id}`, { stats });
             
             console.log("Request status updated:", response.data);
             setRelaod(!reloadData)
@@ -23,7 +23,7 @@ function AllRequests() {
 
     useEffect(() => {
 
-        axios.get(`http://localhost:3000/request`)
+        axios.get(`https://gateway-9pxx.onrender.com/request`)
             .then(response => {
                 setRequests(response.data); // Set the fetched requests to state
             })
