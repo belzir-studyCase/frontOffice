@@ -3,12 +3,14 @@ import React, { useEffect, useState } from 'react'
 import Navbar from './shared/navbar';
 
 function AllUsers() {
-    //https://gateway-9pxx.onrender.com/account/all/users/
+    //https://localhost:3000/account/all/users/
     const [users , setUser] = useState([]); 
     const [error , setError] = useState(null); 
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'; 
+
     useEffect(() => {
 
-        axios.get(`https://gateway-9pxx.onrender.com/account/all/users/`)
+        axios.get(`https://localhost:3000/account/all/users/`)
             .then(response => {
                 setUser(response.data); 
             })

@@ -7,6 +7,8 @@ function CreateRequest() {
     const [description, setDescription] = useState('');
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'; 
+
     const navigate = useNavigate(); 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -25,7 +27,7 @@ function CreateRequest() {
         };
 
         try {
-            const response = await axios.post('https://gateway-9pxx.onrender.com/request', requestData); // Update URL to your API endpoint
+            const response = await axios.post('https://localhost:3000/request', requestData); // Update URL to your API endpoint
             setSuccess('Request created successfully!');
             setTitle(''); // Clear the title field
             setDescription(''); // Clear the description field

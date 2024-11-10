@@ -9,11 +9,12 @@ function UpdateRequest() {
     const [error, setError] = useState(null);
     const [success, setSuccess] = useState(null);
     const navigate = useNavigate();
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'; 
 
     useEffect(() => {
         const fetchRequest = async () => {
             try {
-                const response = await axios.get(`https://gateway-9pxx.onrender.com/request/${id}`);
+                const response = await axios.get(`https://localhost:3000/request/${id}`);
                 const { title, description, stats } = response.data;
                 if (stats != 'Pending') {
                     navigate("/requests")
@@ -48,7 +49,7 @@ function UpdateRequest() {
         };
 
         try {
-            const response = await axios.put(`https://gateway-9pxx.onrender.com/request/${id}`, updatedRequestData);
+            const response = await axios.put(`https://localhost:3000/request/${id}`, updatedRequestData);
             setSuccess('Request updated successfully!');
             navigate('/requests');
             console.log(response.data);

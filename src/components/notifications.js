@@ -5,10 +5,11 @@ import axios from 'axios';
 function Notification() {
     const [error , setError] = useState()
     const [notifications , setNotifications] = useState([])
-    
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'; 
+
     useEffect(() => {
             // Fetch requests associated with the user's email
-            axios.get(`https://gateway-9pxx.onrender.com/notification/all`)
+            axios.get(`https://localhost:3000/notification/all`)
                 .then(response => {
                     console.log(response.data.notifications);
                     

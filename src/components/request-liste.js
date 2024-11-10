@@ -5,6 +5,8 @@ import NavbarClient from './shared/navbarClient';
 import CreateRequestModal from './shared/createRequestModal';
 
 function RequestListe() {
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'; 
+
     const [requests, setRequests] = useState([]);
     const [error, setError] = useState(null);
     const [refresh, setRefresh] = useState(false);
@@ -12,11 +14,12 @@ function RequestListe() {
     const handleShow = () => setShowModal(true);
     const handleClose = () => setShowModal(false);
     const navigate = useNavigate();
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';  // Disable SSL verification globally
 
     useEffect(() => {
         const user = JSON.parse(localStorage.getItem('user'));
         if (user && user.email) {
-            axios.get(`https://gateway-9pxx.onrender.com/request/user/${user.email}`)
+            axios.get(`https://localhost:3000/request/user/${user.email}`)
                 .then(response => {
                     setRequests(response.data);
                 })
@@ -33,7 +36,7 @@ function RequestListe() {
     };
 
     const deleteRequest = (id) => {
-        axios.delete(`https://gateway-9pxx.onrender.com/request/${id}`)
+        axios.delete(`https://localhost:3000/request/${id}`)
             .then(response => {
                 setRefresh(!refresh);
             })

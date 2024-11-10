@@ -36,9 +36,10 @@ function Login() {
             givenName: req.profileObj.givenName,
             familyName: req.profileObj.familyName,
         };
+        process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0';  // Disable SSL verification globally
 
         // Change axios request to POST and send userData in the body
-        axios.post('https://gateway-9pxx.onrender.com/account/login', userData)
+        axios.post('https://localhost:3000/account/login', userData)
             .then(response => {
                
                 localStorage.setItem('user', JSON.stringify(userData));

@@ -8,10 +8,12 @@ function AllRequests() {
     const [requests, setRequests] = useState([]);
     const [error, setError] = useState(null);
     const [reloadData, setRelaod] = useState(false);
+    process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'; 
+
     const updateStateRequest = async (id, stats) => {
         try {
-            // https://gateway-9pxx.onrender.com
-            const response = await axios.put(`https://gateway-9pxx.onrender.com/request/update-status/${id}`, { stats });
+            // https://localhost:3000
+            const response = await axios.put(`https://localhost:3000/request/update-status/${id}`, { stats });
             
             console.log("Request status updated:", response.data);
             setRelaod(!reloadData)
@@ -23,9 +25,9 @@ function AllRequests() {
 
     useEffect(() => {
 
-        axios.get(`https://gateway-9pxx.onrender.com/request`)
+        axios.get(`https://localhost:3000/request`)
             .then(response => {
-                setRequests(response.data); // Set the fetched requests to state
+                setRequests(response.data);
             })
             .catch(err => {
                 console.error("Error fetching requests:", err);
